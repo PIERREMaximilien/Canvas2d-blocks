@@ -42,6 +42,7 @@ function movePaddle() {
     }
 }
 
+
 //* MECHANICAL PADDLE MOVEMENT-end
 
 //? CREATION BALL/MOVEMENT AND PADDLE-start
@@ -87,6 +88,7 @@ function play() {
     paddle.draw()
     drawBricks()
     movePaddle()
+    collisionDetection()
 
     ball.x += ball.dx
     ball.y += ball.dy
@@ -111,6 +113,65 @@ function play() {
 };
 
 //! FUNCTION PLAY-end
+
+//? CREATION BRICKS/COLLISION-start
+
+let brickRowCount = 3,
+    brickColumnCount = 5,
+    brickWidth = 70,
+    brickHeight = 20,
+    brickPadding = 20,
+    brickOffsetTop = 30,
+    brickOffsetLeft = 35;
+
+let bricks = []
+
+function generateBricks(){
+    for (let i = 0; i < brickColumnCount; i++) {
+        bricks[i] = []
+        for (let j = 0; j < brickRowCount; j++) {
+            bricks[i][j] = { x: 0, y: 0, status: 1}
+        }
+    }
+}
+
+function drawBricks() {
+    for (let i = 0; i < brickColumnCount; i++) {
+        for (let j = 0; j < brickRowCount; j++) {
+            if (bricks[i][j].status === 1) {
+                let brickX= i * (brickWidth + brickPadding) + brickOffsetLeft
+                let brickY= j * (brickHeight + brickPadding) + brickOffsetTop
+                bricks[i][j].x = brickX
+                bricks[i][j].y = brickY
+                ctx.beginPath()
+                ctx.rect(brickX, brickY, brickWidth, brickHeight)
+                ctx.fillStyle = "#000"
+                ctx.fill()
+                ctx.closePath()
+            }
+        }
+    }
+}
+
+function collisionDetection() {
+    for (let i = 0; i < brickColumnCount; i++) {
+        for (let j = 0; j < brickRowCount; j++) {
+            let b = bricks[i][j]
+            if (b.status == 1) {
+                if (ball.x >= b.x &&
+                    ball.x <= b.x + brickWidth &&
+                    ball.y >= b.y &&
+                    ball.y <= b.y + brickHeight) {
+                        ball.dy *= -1
+                        b.status = 0
+                        // score++
+                    }
+            }
+        }
+    }
+}
+
+//? CREATION BRICKS COLLISION-end
 
 //TODO START GAME
 
