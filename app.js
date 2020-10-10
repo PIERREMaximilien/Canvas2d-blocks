@@ -4,13 +4,13 @@ const ctx = canvas.getContext("2d");
 canvas.height = 500;
 canvas.width = 500;
 
+//* MECHANICAL PADDLE MOVEMENT-start
+
 let rightPressed = false;
 let leftPressed = false;
 
 document.addEventListener('keydown', keyDownHandler);
 document;addEventListener('keyup' , keyUpHandler);
-
-//! CHECK MECHANICAL
 
 function keyDownHandler(e){
     if(e.key == 'Right' || e.key == 'ArrowRight'){
@@ -18,16 +18,33 @@ function keyDownHandler(e){
     } else if (e.key == 'Left' || e.key == 'ArrowLeft') {
         leftPressed = true
     }
-}
+};
 
 function keyUpHandler(e){
     if(e.key == 'Right' || e.key == 'ArrowRight'){
-        rightPressed = true
+        rightPressed = false
     } else if (e.key == 'Left' || e.key == 'ArrowLeft') {
-        leftPressed = true
+        leftPressed = false
+    }
+};
+
+function movePaddle() {
+    if(rightPressed) {
+        paddle.x += 7
+        if(paddle.x + paddle.width >= canvas.width) {
+            paddle.x = canvas.width - paddle.width
+        }
+    } else if(leftPressed) {
+        paddle.x -= 7
+        if(paddle.x < 0) {
+            paddle.x = 0
+        }
     }
 }
 
+//* MECHANICAL PADDLE MOVEMENT-end
+
+//? CREATION BALL/MOVEMENT AND PADDLE-start
 
 let speed = 3;
 
@@ -54,29 +71,48 @@ let paddle = {
     draw: function() {
         ctx.beginPath();
         ctx.rect(this.x, canvas.height - this.height, this.width, this.height);
-        ctx.fillStyle = '#000';
-        ctx.closePath;
-        ctx.fill();
+        ctx.fillStyle = '#000'
+        ctx.closePath
+        ctx.fill()
     }
 }
 
-function play() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ball.draw();
-    paddle.draw();
+//? CREATION BALL/MOVEMENT AND PADDLE-end
 
-    ball.x += ball.dx;
-    ball.y += ball.dy;
+//! FUNCTION PLAY-start
+
+function play() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height)
+    ball.draw()
+    paddle.draw()
+    drawBricks()
+    movePaddle()
+
+    ball.x += ball.dx
+    ball.y += ball.dy
 
     if(ball.x + ball.radius > canvas.width || ball.x - ball.radius < 0) {
-        ball.dx *= -1;
+        ball.dx *= -1
     }
 
     if(ball.y + ball.radius > canvas.height || ball.y - ball.radius < 0) {
-        ball.dy *= -1;
+        ball.dy *= -1
+    }
+
+    if (
+        ball.x >= paddle.x && 
+        ball.x <= paddle.x + paddle.width &&
+        ball.y + ball.radius >= canvas.height - paddle.height
+        ) {
+        ball.dy *= -1
     }
 
     requestAnimationFrame(play);
 };
 
-play();
+//! FUNCTION PLAY-end
+
+//TODO START GAME
+
+generateBricks()
+play()
