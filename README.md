@@ -19,18 +19,28 @@ Create a simple Bloks game with HTML5 canvas and vanilla javascript.
 
 ### Must-have features
 
-- blocks game with 15 blocks.
-- high score counter.
-- each level finished increase speed ball.
+- Blocks game with 15 blocks.
+- High score counter.
+-Level up increase ball speed.
 
 ### Nice-to-have feature
 
-- differents levels positions and color.
+- Levels with differents positions and color.
+- Differents bricks strength.
+- Bonus :
+  * increase paddle size X secondes.
+  * slow ball speed.
+  * ball pass trough bricks X secondes.
+  * multiply balls.
+- Malus :
+  * minimize paddle size X secondes.
+  * inscrease ball speed.
 
 ## Built With
 
 * `HTML5`
 * `Canvas`
+* `CSS`
 * `Vanilla JavaScript`
 
 ## Authors
