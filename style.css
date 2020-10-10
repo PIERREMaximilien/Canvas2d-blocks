@@ -1,0 +1,37 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: blueviolet;
+}
+
+body {
+    background: black;
+}
+
+#canvas {
+    background-color: blueviolet;
+    border-radius: 10px;
+    position: absolute;
+    left: 50%;
+    right: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid purple;
+}
+
+.high-score {
+    position: absolute;
+    top: 1.5rem;
+    width: 80%;
+    left: 10%;
+    text-align: center;
+}
+
+.reset {
+    cursor: pointer;
+    position: absolute;
+    top: 95%;
+    left: 10%;
+    width: 90%;
+    text-align: center;
+}
