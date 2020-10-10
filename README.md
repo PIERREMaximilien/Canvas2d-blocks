@@ -1,6 +1,6 @@
 # blocks project
 
-- Type of Challenge: `Learning`
+- Type of Challenge: `Introduction`
 - Duration: `2 days`
 - started: `10/10/20`
 - Team : `Maximilien`
