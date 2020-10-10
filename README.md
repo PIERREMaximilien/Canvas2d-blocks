@@ -5,13 +5,13 @@
 - started: `10/10/20`
 - Team challenge : `Maximilien`
 
-# Project Title
+## Project Title
 
-Blocks
+**Blocks**
 
 ## Game
 
-----
+ link
 
 ## The Mission
 
