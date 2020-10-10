@@ -3,11 +3,7 @@
 - Type of Challenge: `Learning`
 - Duration: `2 days`
 - started: `10/10/20`
-- Team challenge : `Maximilien`
-
-## Project Title
-
-**Blocks**
+- Team : `Maximilien`
 
 ## Game
 
@@ -16,6 +12,7 @@
 ## The Mission
 
 Create a simple Bloks game with HTML5 canvas and vanilla javascript.
+First experience canvas and game univers.
 
 ### Must-have features
 
